@@ -9,9 +9,6 @@ export default function BuscaCnpj(props) {
     // const textInputRef = useRef(null);
 
     useEffect(() => {
-        if(data) {
-            console.log(data)
-        }
     }, [data]);
 
     async function buscar(e) {
@@ -29,9 +26,13 @@ export default function BuscaCnpj(props) {
         setCnpj(e.target.value);
     };
 
+    function salvarDados() {
+        console.log(data)
+    }
+
     return (
         <div className="container">
-        <form onSubmit={buscar} className="form">
+        <form onSubmit={buscar} className="search">
           <label className="label">
             Insira o CNPJ:
             <input
@@ -53,6 +54,8 @@ export default function BuscaCnpj(props) {
             <p><strong>Porte:</strong> {data.porte?.descricao}</p>
             <p><strong>Simples Nacional:</strong> {data.simples?.simples}</p>
             <p><strong>Atualizado em:</strong> {new Date(data.atualizado_em).toLocaleDateString()}</p>
+
+            <button type="button" className="button" onClick={salvarDados}>Salvar dados</button>
           </div>
         ) : (
           <div>
